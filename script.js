@@ -124,8 +124,8 @@ console.log(restaurantName, hours, tags); //variable names that are created
 // default value [] helpful when data is not hardcoded
 // getting data from api etc.
 
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
+// const { menu = [], starterMenu: starters = [] } = restaurant;
+// console.log(menu, starters);
 
 // ****************** Mutating Variables  ************
 
@@ -144,3 +144,47 @@ const {
   fri: { open, close },
 } = openingHours;
 console.log(open, close);
+
+// *************** spread operator ************
+
+// const arr = [7, 8, 9];
+
+// // adding to an array and keeping current array values
+// const badNewArr = [1, 2, 5, 6, 0, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
+
+// const newArr = [1, 2, ...arr]; // spread operator to retrieve array elements
+// console.log(newArr);
+
+// console.log(...newArr); // to retrieve array elements
+// console.log(1, 2, 7, 8, 9); // same as line 159
+
+// const newMenu = [...restaurant.mainMenu, 'Gnocci']; // creating new array based on existing array and adding an element
+// console.log(newMenu);
+
+// spread operator similar to destructuring
+// spread opertator takes all elements from an array and doesnt create new variables
+// we can only uses it where values are separated by commas
+// can create shallow copys of array and merge two arrays together
+
+// COPY ARRAY
+
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// JOIN 2 ARRAYS TOGETHER
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+// Iterables are arrays, strings, maps, sets. NOT OBJECTS!
+
+const str = 'Jonas';
+
+const letters = [...str, , 'S']; // unpacked array with spread operator
+console.log(letters);
+console.log(...str);
+
+// console.log(`${..str} Schmedtman`); // unexpected token This does not work
+/* spread operator doesnt work in a template literal 
+because its not a place that expects multiple values
+seperated by a comma */
