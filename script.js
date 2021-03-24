@@ -102,6 +102,9 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ingredients}`);
+  },
 };
 
 // creates three new variables on restuarant object
@@ -131,11 +134,11 @@ console.log(restaurantName, hours, tags); //variable names that are created
 
 // Destructuring Array
 
-let a = 111;
-let b = 999;
-const obj = { a: 23, b: 7, c: 14 };
-({ a, b } = obj);
-console.log(a, b); // changed variables a, b into array values 23, 7
+// let a = 111;
+// let b = 999;
+// const obj = { a: 23, b: 7, c: 14 };
+// ({ a, b } = obj);
+// console.log(a, b); // changed variables a, b into array values 23, 7
 
 // *********  Nested objects **************
 
@@ -182,9 +185,84 @@ const str = 'Jonas';
 
 const letters = [...str, , 'S']; // unpacked array with spread operator
 console.log(letters);
-console.log(...str);
+console.log(...str); // backslash escaping used betweem let\'s prettier gets rid of it
 
 // console.log(`${..str} Schmedtman`); // unexpected token This does not work
 /* spread operator doesnt work in a template literal 
 because its not a place that expects multiple values
 seperated by a comma */
+
+/* multiple values are usually expected when we pass multple
+ values into a function or build a new array */
+
+// REAL WORLD EXAMPLE!!!!
+
+// const ingredients = [
+//   prompt("Let's make pasta! Ingredient 1?"),
+//   prompt('Ingredient 2?'),
+//   prompt('Ingredient 3?'), ];
+// console.log(ingredients);
+
+// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+// restaurant.orderPasta(...ingredients); // ES6 syntax!
+
+// ************  OBJECTS ******************
+//create new restuarant object with all data from original plus additional data
+
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guissepe' };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name); // printing just name of restuarant
+console.log(restaurant.name); // printing just names of restuarant
+
+console.log(restaurant);
+console.log(restaurantCopy);
+
+//  *********   The Rest Pattern and Parameters  *******
+
+///1) DESTRUCTURING
+
+// pack elements into array
+// Spread, because on right side of =
+// const arr = [1, 2, ...[3, 4]];
+
+// // REST PATTERN  left hand side of array
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a, b, others);
+
+// // skipping elements from array, collecting other elements from array
+// const [pizza, , risotto, ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(pizza, risotto, otherFood);
+
+// // Objects
+// const { sat, ...weekdays } = restaurant.openingHours;
+// console.log(weekdays);
+
+// // 2)  Functions
+
+// const add = function (...numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+//   console.log(sum);
+// };
+
+// add(2, 3);
+// add(5, 3, 7, 2);
+// add(8, 2, 5, 3, 2, 1, 4);
+
+// const x = [23, 5, 7];
+// add(...x);
+
+// Use ANY data type, return ANY data type,
+// short-circuiting
+console.log(3 || 'jonas');
+console.log('' || 'jonas');
+console.log(true || 0);
+console.log(undefined || null);
+// short cirtctuing log first truthy value gets logged
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
