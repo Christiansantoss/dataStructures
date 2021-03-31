@@ -78,47 +78,47 @@
 //expression that makes it possible to unpack values from arrays, or
 //properties from objects, into distinct variables.
 
-const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+// const restaurant = {
+//   name: 'Classico Italiano',
+//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+//   openingHours: {
+//     thu: {
+//       open: 12,
+//       close: 22,
+//     },
+//     fri: {
+//       open: 11,
+//       close: 23,
+//     },
+//     sat: {
+//       open: 0, // Open 24 hours
+//       close: 24,
+//     },
+//   },
 
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(`Here is your delicious pasta with ${ingredients}`);
-  },
-};
+//   order: function (starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
+//   orderPasta: function (ing1, ing2, ing3) {
+//     console.log(`Here is your delicious pasta with ${ingredients}`);
+//   },
+// };
 
 // creates three new variables on restuarant object
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+// const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
 
-// retrieves data from the restaurant object
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
+// // retrieves data from the restaurant object
+// const {
+//   name: restaurantName,
+//   openingHours: hours,
+//   categories: tags,
+// } = restaurant;
 
-console.log(restaurantName, hours, tags); //variable names that are created
+// console.log(restaurantName, hours, tags); //variable names that are created
 // helpful when dealing with 3rd party data
 
 // setting default values to destruct
@@ -143,10 +143,10 @@ console.log(restaurantName, hours, tags); //variable names that are created
 // *********  Nested objects **************
 
 // destructuring nested objects able to get values without variables
-const {
-  fri: { open, close },
-} = openingHours;
-console.log(open, close);
+// const {
+//   fri: { open, close },
+// } = openingHours;
+// console.log(open, close);
 
 // *************** spread operator ************
 
@@ -172,20 +172,20 @@ console.log(open, close);
 
 // COPY ARRAY
 
-const mainMenuCopy = [...restaurant.mainMenu];
+// const mainMenuCopy = [...restaurant.mainMenu];
 
-// JOIN 2 ARRAYS TOGETHER
+// // JOIN 2 ARRAYS TOGETHER
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-console.log(menu);
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(menu);
 
-// Iterables are arrays, strings, maps, sets. NOT OBJECTS!
+// // Iterables are arrays, strings, maps, sets. NOT OBJECTS!
 
-const str = 'Jonas';
+// const str = 'Jonas';
 
-const letters = [...str, , 'S']; // unpacked array with spread operator
-console.log(letters);
-console.log(...str); // backslash escaping used betweem let\'s prettier gets rid of it
+// const letters = [...str, , 'S']; // unpacked array with spread operator
+// console.log(letters);
+// console.log(...str); // backslash escaping used betweem let\'s prettier gets rid of it
 
 // console.log(`${..str} Schmedtman`); // unexpected token This does not work
 /* spread operator doesnt work in a template literal 
@@ -209,16 +209,16 @@ seperated by a comma */
 // ************  OBJECTS ******************
 //create new restuarant object with all data from original plus additional data
 
-const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guissepe' };
-console.log(newRestaurant);
+// const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guissepe' };
+// console.log(newRestaurant);
 
-const restaurantCopy = { ...restaurant };
-restaurantCopy.name = 'Ristorante Roma';
-console.log(restaurantCopy.name); // printing just name of restuarant
-console.log(restaurant.name); // printing just names of restuarant
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = 'Ristorante Roma';
+// console.log(restaurantCopy.name); // printing just name of restuarant
+// console.log(restaurant.name); // printing just names of restuarant
 
-console.log(restaurant);
-console.log(restaurantCopy);
+// console.log(restaurant);
+// console.log(restaurantCopy);
 
 //  *********   The Rest Pattern and Parameters  *******
 
@@ -260,9 +260,131 @@ console.log(restaurantCopy);
 
 // Use ANY data type, return ANY data type,
 // short-circuiting
-console.log(3 || 'jonas');
-console.log('' || 'jonas');
-console.log(true || 0);
-console.log(undefined || null);
-// short cirtctuing log first truthy value gets logged
-console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+// console.log(3 || 'jonas');
+// console.log('' || 'jonas');
+// console.log(true || 0);
+// console.log(undefined || null);
+// // short cirtctuing log first truthy value gets logged
+// // if the first operant is true javascript doesnt look further
+// console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+// restaurant.numGuests = 23;
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1);
+
+// const guests2 = restaurant.numGuests || 10;
+
+// console.log(guests2);
+
+// console.log('---- AND ----');
+
+// console.log(0 && 'jonas');
+// console.log(7 && 'jonas');
+// console.log('Hello' && 23 && null && 'jonas');
+
+// //Practical example
+
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza('mushrooms', 'spinach');
+// }
+
+// restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+// // *********   The Nullish Coalescing Operator  *********
+
+// const guestCorrect = restaurant.numGuests ?? 10;
+// console.log(guestCorrect);
+
+///////////////////////////////////////
+// Coding Challenge #1
+
+// We're building a football betting app (soccer for my American friends 😅)!
+
+// Suppose we get data from a web service about a certain game (below). In this challenge we're gonna work with the data. So here are your tasks:
+
+// 1. Create one player array for each team (variables 'players1' and 'players2')
+// 2. The first player in any player array is the goalkeeper and the others are field players. For Bayern Munich (team 1) create one variable ('gk') with the goalkeeper's name, and one array ('fieldPlayers') with all the remaining 10 field players
+// 3. Create an array 'allPlayers' containing all players of both teams (22 players)
+// 4. During the game, Bayern Munich (team 1) used 3 substitute players. So create a new array ('players1Final') containing all the original team1 players plus 'Thiago', 'Coutinho' and 'Perisic'
+// 5. Based on the game.odds object, create one variable for each odd (called 'team1', 'draw' and 'team2')
+// 6. Write a function ('printGoals') that receives an arbitrary number of player names (NOT an array) and prints each of them to the console, along with the number of goals that were scored in total (number of player names passed in)
+// 7. The team with the lower odd is more likely to win. Print to the console which team is more likely to win, WITHOUT using an if/else statement or the ternary operator.
+
+// TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+//1.
+// using destructuring
+const [players1, players2] = game.players;
+
+console.log(players1, players2);
+
+//2.
+const [gk, ...fieldPlayers] = players1;
+
+console.log(gk, fieldPlayers);
+
+//3.
+
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+
+//4.
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Periscic'];
+
+//5.
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+
+console.log(team1, draw, team2);
+
+//6.
+
+const printGoals = function (...players) {
+  console.log(`${players.length} goals were scored`);
+};
+
+printGoals('Davies', 'Muller', 'Lewandowski', 'kimmich');
+
+printGoals('Davis', 'Muller');
